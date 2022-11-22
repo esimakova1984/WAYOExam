@@ -9,6 +9,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HelperSearch  extends HelperBase{
 
      String menuBtn = "//button[@aria-labelledby='hnf-header-hamburger-label']";
+     String products = "//a[@data-tracking-label='products']";
+     String homeFurniture = "//*[@href='https://www.ikea.com/il/he/cat/furniture-fu001/']";
+     String tables = "//a[@data-tracking-label='fu004']";
+     String coffeeTables = "//*[@data-tracking-label='products | fu001 | fu004 | 10705']";
+     String containerPage = "//*[@class='plp-page-container__main']";
+     String trulstorpTable = "//*[@data-ref-id='00400277']";
+     String whiteColor ="//*[@class='pip-product-styles__item ']";
+     String selectStoreBtn = "//button[@class='pip-link-button pip-availability-modal-open-button']";
+     String modalBody = "//*[@class='pip-modal-body']";
+     String handlerBtn = "//button[@id='onetrust-accept-btn-handler']";
+     String submitTownBtn = "//*[@class='pip-btn pip-btn--primary']";
+     String storeNameInfo = "//*[@aria-describedby='pip-stockcheck__store-name-info']";
 
 
     public HelperSearch(WebDriver driver) {
@@ -22,49 +34,49 @@ public class HelperSearch  extends HelperBase{
 
     public void findTables() {
 
-        click(By.xpath("//a[@data-tracking-label='products']"));
+        click(By.xpath(products));
         try {
-            click(By.xpath("//*[@href='https://www.ikea.com/il/he/cat/furniture-fu001/']"));
+            click(By.xpath(homeFurniture));
         }catch (StaleElementReferenceException ex){
-            click(By.xpath("//*[@href='https://www.ikea.com/il/he/cat/furniture-fu001/']"));
+            click(By.xpath(homeFurniture));
         }
-        click(By.xpath("//a[@data-tracking-label='fu004']"));
+        click(By.xpath(tables));
     }
 
     public void findCoffeeTables() {
-        click(By.xpath("//*[@data-tracking-label='products | fu001 | fu004 | 10705']"));
+        click(By.xpath(coffeeTables));
     }
 
     public void scrollDownPage() {
-        WebElement container = driver.findElement(By.xpath("//*[@class='plp-page-container__main']"));
+        WebElement container = driver.findElement(By.xpath(containerPage));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", container);
     }
 
     public void findTrulstorpTable() {
-        click(By.xpath("//*[@data-ref-id='00400277']"));
+        click(By.xpath(trulstorpTable));
     }
 
-    public void selectAColor() {
-        click(By.xpath("//*[@class='pip-product-styles__item 'and contains(@aria-label, 'לבן')]"));
+    public void selectColor() {
+        click(By.xpath(whiteColor));
     }
 
 
-    public void openSearchAShop() {
-            click(By.xpath("//button[@class='pip-link-button pip-availability-modal-open-button']"));
+    public void openSearchStore() {
+            click(By.xpath(selectStoreBtn));
     }
 
-    public void selectATown(String towm) {
-        WebElement container = driver.findElement(By.xpath("//*[@class='pip-modal-body']"));
+    public void selectTown(String town) {
+        WebElement container = driver.findElement(By.xpath(modalBody));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", container);
-        click(By.xpath("//*[text()='" + towm + "']"));
-        click(By.xpath("//button[@id='onetrust-accept-btn-handler']"));
-        click(By.xpath("//*[@class='pip-btn pip-btn--primary']"));
+        click(By.xpath("//*[text()='" + town + "']"));
+        click(By.xpath(handlerBtn));
+        click(By.xpath(submitTownBtn));
     }
 
-    public boolean isTheItemAvailable() {
+    public boolean isItemAvailable() {
         new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@aria-describedby='pip-stockcheck__store-name-info']"))));
-        String message = driver.findElement(By.xpath("//*[@aria-describedby='pip-stockcheck__store-name-info']")).getText();
+                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(storeNameInfo))));
+        String message = driver.findElement(By.xpath(storeNameInfo)).getText();
         return message.equals("חנות - מוצר במלאי");
     }
 }

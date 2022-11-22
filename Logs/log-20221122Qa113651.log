@@ -1,5 +1,0 @@
-11:36:53.127  INFO  manager.ApplicationManager - All tests start with Chromedriver
-11:36:58.034  INFO  tests.TestBase - The test starts positive registration
-11:37:00.168  INFO  tests.TestBase - The registration form is opened
-11:37:00.880  INFO  tests.TestBase - The registration form is filled with data: User(name=Rima, lastName=Sima, email=esimakova-1660@gmail.com, password=Fimasima1234!)
-11:37:00.886  INFO  tests.TestBase - The page is scrolled

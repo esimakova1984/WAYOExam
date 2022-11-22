@@ -3,7 +3,7 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SearchAnItem extends TestBase{
+public class SearchItem extends TestBase{
 
     @Test
     public void searchTrulstorpTable(){
@@ -17,13 +17,13 @@ public class SearchAnItem extends TestBase{
         app.getHelperSearch().scrollDownPage();
         app.getHelperSearch().findTrulstorpTable();
         logger.info("'Trulstorp' table is selected");
-        app.getHelperSearch().selectAColor();
+        app.getHelperSearch().selectColor();
         logger.info("white color of 'Trulstorp' table is selected");
-        app.getHelperSearch().openSearchAShop();
+        app.getHelperSearch().openSearchStore();
         logger.info("The store is selected");
-        app.getHelperSearch().selectATown("נתניה");
+        app.getHelperSearch().selectTown("נתניה");
         logger.info("The town is selected");
-        Assert.assertTrue(app.getHelperSearch().isTheItemAvailable());
+        Assert.assertTrue(app.getHelperSearch().isItemAvailable());
         logger.info("Check that item is available in the store");
         logger.info("Test passed successfully");
     }

@@ -1,9 +1,0 @@
-12:52:41.132  INFO  manager.ApplicationManager - All tests start with Chromedriver
-12:52:47.576  INFO  tests.TestBase - The test starts search 'Trulstorp' table
-12:52:47.639  INFO  tests.TestBase - Menu is opened
-12:52:48.862  INFO  tests.TestBase - Tables from menu is selected
-12:52:50.635  INFO  tests.TestBase - Coffee tables from the list of tables are selected
-12:52:52.951  INFO  tests.TestBase - 'Trulstorp' table is selected
-12:52:53.028  INFO  tests.TestBase - white color of 'Trulstorp' table is selected
-12:52:53.084  INFO  tests.TestBase - The store is selected
-12:52:53.779  INFO  tests.TestBase - The town is selected

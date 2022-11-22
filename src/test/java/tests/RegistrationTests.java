@@ -19,11 +19,11 @@ public class RegistrationTests extends TestBase{
     @Test
     public void registrationSuccess(){
         logger.info("The test starts positive registration");
-        app.getHelperUser().openARegistrationForm();
+        app.getHelperUser().openRegistrationForm();
         logger.info("The registration form is opened");
-        app.getHelperUser().fillTheRegistrationForm(user);
+        app.getHelperUser().fillRegistrationForm(user);
         logger.info("The registration form is filled with data: " + user);
-        app.getHelperUser().scrollDownTheForm();
+        app.getHelperUser().scrollDownForm();
         logger.info("The page is scrolled");
         app.getHelperUser().checkBoxPolicy();
         logger.info("The checkbox of Policy is necessary");

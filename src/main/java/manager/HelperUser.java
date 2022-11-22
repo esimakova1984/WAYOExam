@@ -7,43 +7,55 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class HelperUser extends HelperBase {
+
+      String profileLink = "//*[@class='hnf-header__profile-link ']";
+      String signupBtn = "//*[contains(@class,'login-internal-signup-btn-desktop')]";
+      String firstName = "//*[@name='firstName']";
+      String lastName = "//*[@name='lastName']";
+      String email = "//*[@name='username']";
+      String password = "//*[@name='password']";
+      String spacing = "//*[@class='profile__ikea-col-xl-2 profile__ikea-col-sm-1 profile__col-no-v-spacing']";
+      String checkBoxPolicy = "//*[@for='regular-signup-form-acceptPrivacyPolicy']";
+      String submitRegistrationForm = "//*[@class='profile__btn__inner profile__btn__inner--primary']";
+      String greetingMessage = "//h1";
+
     public HelperUser(WebDriver driver) {
         super(driver);
     }
 
 
-    public void openARegistrationForm() {
-        click(By.xpath("//*[@class='hnf-header__profile-link ']"));
-        click(By.xpath("//*[contains(@class,'login-internal-signup-btn-desktop')]"));
+    public void openRegistrationForm() {
+        click(By.xpath(profileLink));
+        click(By.xpath(signupBtn));
     }
 
-    public void fillTheRegistrationForm(User user) {
-        type(By.xpath("//*[@name='firstName']"), user.getName());
-        type(By.xpath("//*[@name='lastName']"), user.getLastName());
-        type(By.xpath("//*[@name='username']"), user.getEmail());
-        type(By.xpath("//*[@name='password']"), user.getPassword());
-        click(By.xpath("//*[@class='profile__ikea-col-xl-2 profile__ikea-col-sm-1 profile__col-no-v-spacing']"));
+    public void fillRegistrationForm(User user) {
+        type(By.xpath(firstName), user.getName());
+        type(By.xpath(lastName), user.getLastName());
+        type(By.xpath(email), user.getEmail());
+        type(By.xpath(password), user.getPassword());
+        click(By.xpath(spacing));
     }
 
     public void submitRegistrationForm() {
         new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@class='profile__btn__inner profile__btn__inner--primary']"))));
-        click(By.xpath("//*[@class='profile__btn__inner profile__btn__inner--primary']"));
+                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(submitRegistrationForm))));
+        click(By.xpath(submitRegistrationForm));
     }
 
     public void checkBoxPolicy() {
 
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions
-                        .visibilityOf(driver.findElement(By.xpath("//*[@for='regular-signup-form-acceptPrivacyPolicy']")))).click();
+                        .visibilityOf(driver.findElement(By.xpath(checkBoxPolicy)))).click();
     }
 
-    public void scrollDownTheForm() {
+    public void scrollDownForm() {
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,350)","");
     }
 
     public String checkMessage() {
-        return driver.findElement(By.xpath("//h1")).getText();
+        return driver.findElement(By.xpath(greetingMessage)).getText();
     }
 
 }
