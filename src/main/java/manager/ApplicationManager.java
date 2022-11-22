@@ -17,7 +17,7 @@ public class ApplicationManager {
     public void init(){
         driver = new ChromeDriver();
         logger.info("All tests start with Chromedriver");
-        driver.manage().window();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.navigate().to("https://www.ikea.com/il/he/");
         helperUser = new HelperUser(driver);

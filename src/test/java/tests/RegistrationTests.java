@@ -9,12 +9,12 @@ public class RegistrationTests extends TestBase{
     @Test
     public void registrationSuccess(){
         logger.info("The test starts positive registration");
-        int index = ((int) System.currentTimeMillis()/1000)%3600;
+        int index = ((int) System.currentTimeMillis()/1000)%360;
         User user = User.builder()
                 .name("Rima")
                 .lastName("Sima")
                 .email("esimakova" + index + "@gmail.com")
-                .password("Fimasima1234")
+                .password("Fimasima1234!")
                 .build();
 
         app.getHelperUser().openARegistrationForm();

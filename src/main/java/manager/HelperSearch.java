@@ -25,12 +25,12 @@ public class HelperSearch  extends HelperBase{
         }catch (StaleElementReferenceException ex){
             click(By.xpath("//*[@href='https://www.ikea.com/il/he/cat/furniture-fu001/']"));
         }
-        click(By.xpath("//a[text()='שולחנות']"));
+        click(By.xpath("//a[@data-tracking-label='fu004']"));
 
     }
 
     public void findCoffeeTables() {
-        click(By.xpath("//*[text()='שולחנות קפה וצד']"));
+        click(By.xpath("//*[@data-tracking-label='products | fu001 | fu004 | 10705']"));
     }
 
     public void scrollDownThePage() {
@@ -43,7 +43,7 @@ public class HelperSearch  extends HelperBase{
     }
 
     public void selectAColor() {
-        click(By.xpath("//*[@aria-label='לבן']"));
+        click(By.xpath("//*[@class='pip-product-styles__item pip-product-styles__item--selected']"));
     }
 
 
@@ -58,7 +58,7 @@ public class HelperSearch  extends HelperBase{
 
         click(By.xpath("//*[text()='" + towm + "']"));
         click(By.xpath("//button[@id='onetrust-accept-btn-handler']"));
-        click(By.xpath("//*[text()='בחר חנות זו']"));
+        click(By.xpath("//*[@class='pip-btn pip-btn--primary']"));
 
     }
 
