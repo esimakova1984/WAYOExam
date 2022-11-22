@@ -14,7 +14,7 @@ public class SearchAnItem extends TestBase{
         logger.info("Tables from menu is selected");
         app.getHelperSearch().findCoffeeTables();
         logger.info("Coffee tables from the list of tables are selected");
-        app.getHelperSearch().scrollDownThePage();
+        app.getHelperSearch().scrollDownPage();
         app.getHelperSearch().findTrulstorpTable();
         logger.info("'Trulstorp' table is selected");
         app.getHelperSearch().selectAColor();
@@ -23,20 +23,8 @@ public class SearchAnItem extends TestBase{
         logger.info("The store is selected");
         app.getHelperSearch().selectATown("נתניה");
         logger.info("The town is selected");
-        if(!app.getHelperSearch().isTheItemNotAvailable()){
-            logger.info("Check that item is available in the store");
-            app.getHelperSearch().addToMyWishList();
-            logger.info("The item was added to my wish list");
-        }else{
-            logger.info("The item is not available in the store");
-        }
-
+        Assert.assertTrue(app.getHelperSearch().isTheItemAvailable());
+        logger.info("Check that item is available in the store");
         logger.info("Test passed successfully");
-
-
-
-
-
-
     }
 }

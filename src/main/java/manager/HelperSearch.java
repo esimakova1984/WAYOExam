@@ -8,13 +8,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HelperSearch  extends HelperBase{
 
+     String menuBtn = "//button[@aria-labelledby='hnf-header-hamburger-label']";
+
+
     public HelperSearch(WebDriver driver) {
         super(driver);
     }
 
 
     public void openMenu() {
-        click(By.xpath("//button[@aria-labelledby='hnf-header-hamburger-label']"));
+        click(By.xpath(menuBtn));
     }
 
     public void findTables() {
@@ -26,14 +29,13 @@ public class HelperSearch  extends HelperBase{
             click(By.xpath("//*[@href='https://www.ikea.com/il/he/cat/furniture-fu001/']"));
         }
         click(By.xpath("//a[@data-tracking-label='fu004']"));
-
     }
 
     public void findCoffeeTables() {
         click(By.xpath("//*[@data-tracking-label='products | fu001 | fu004 | 10705']"));
     }
 
-    public void scrollDownThePage() {
+    public void scrollDownPage() {
         WebElement container = driver.findElement(By.xpath("//*[@class='plp-page-container__main']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", container);
     }
@@ -43,7 +45,7 @@ public class HelperSearch  extends HelperBase{
     }
 
     public void selectAColor() {
-        click(By.xpath("//*[@class='pip-product-styles__item pip-product-styles__item--selected']"));
+        click(By.xpath("//*[@class='pip-product-styles__item 'and contains(@aria-label, 'לבן')]"));
     }
 
 
@@ -51,36 +53,19 @@ public class HelperSearch  extends HelperBase{
             click(By.xpath("//button[@class='pip-link-button pip-availability-modal-open-button']"));
     }
 
-
     public void selectATown(String towm) {
         WebElement container = driver.findElement(By.xpath("//*[@class='pip-modal-body']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", container);
-
         click(By.xpath("//*[text()='" + towm + "']"));
         click(By.xpath("//button[@id='onetrust-accept-btn-handler']"));
         click(By.xpath("//*[@class='pip-btn pip-btn--primary']"));
-
     }
 
-
-    public boolean isTheItemNotAvailable() {
+    public boolean isTheItemAvailable() {
         new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//button[@class='pip-link-button pip-availability-modal-open-button']"))));
-        String message = driver.findElement(By.xpath("//button[@class='pip-link-button pip-availability-modal-open-button']")).getText();
-        return message.equals("שלחו לי הודעה");
-    }
-
-
-    public void addToMyWishList() {
-        click(By.xpath("//*[@class='pip-btn pip-leading-icon pip-btn--secondary pip-btn--full-width ']"));
-    }
-
-
-
-    public String checkButtonMessage() {
-        new WebDriverWait(driver, 15)
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("button[class='pip-btn pip-btn--small pip-leading-icon pip-btn--primary-inverse pip-favourite-button pip-favourite-button--hidden'] span[class='pip-btn__label']"))));
-        return driver.findElement(By.cssSelector("button[class='pip-btn pip-btn--small pip-leading-icon pip-btn--primary-inverse pip-favourite-button pip-favourite-button--hidden'] span[class='pip-btn__label']")).getText();
+                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@aria-describedby='pip-stockcheck__store-name-info']"))));
+        String message = driver.findElement(By.xpath("//*[@aria-describedby='pip-stockcheck__store-name-info']")).getText();
+        return message.equals("חנות - מוצר במלאי");
     }
 }
 

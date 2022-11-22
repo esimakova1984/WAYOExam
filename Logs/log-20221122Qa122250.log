@@ -1,0 +1,12 @@
+12:22:52.298  INFO  manager.ApplicationManager - All tests start with Chromedriver
+12:22:58.277  INFO  tests.TestBase - The test starts search 'Trulstorp' table
+12:22:58.348  INFO  tests.TestBase - Menu is opened
+12:23:00.302  INFO  tests.TestBase - Tables from menu is selected
+12:23:01.659  INFO  tests.TestBase - Coffee tables from the list of tables are selected
+12:23:05.660  INFO  tests.TestBase - 'Trulstorp' table is selected
+12:23:05.749  INFO  tests.TestBase - white color of 'Trulstorp' table is selected
+12:23:05.813  INFO  tests.TestBase - The store is selected
+12:23:06.501  INFO  tests.TestBase - The town is selected
+12:23:06.569  INFO  tests.TestBase - Check that item is available in the store
+12:23:06.636  INFO  tests.TestBase - The item was added to my wish list
+12:23:06.636  INFO  tests.TestBase - Test passed successfully

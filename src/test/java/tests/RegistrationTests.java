@@ -4,19 +4,21 @@ import models.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+
+
 public class RegistrationTests extends TestBase{
+
+    int index = ((int) System.currentTimeMillis()/1000)%360;
+    User user = User.builder()
+            .name("Rima")
+            .lastName("Sima")
+            .email("esimakova" + index + "@gmail.com")
+            .password("Fimasima1234!")
+            .build();
 
     @Test
     public void registrationSuccess(){
         logger.info("The test starts positive registration");
-        int index = ((int) System.currentTimeMillis()/1000)%360;
-        User user = User.builder()
-                .name("Rima")
-                .lastName("Sima")
-                .email("esimakova" + index + "@gmail.com")
-                .password("Fimasima1234!")
-                .build();
-
         app.getHelperUser().openARegistrationForm();
         logger.info("The registration form is opened");
         app.getHelperUser().fillTheRegistrationForm(user);
