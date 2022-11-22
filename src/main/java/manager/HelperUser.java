@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 public class HelperUser extends HelperBase {
     public HelperUser(WebDriver driver) {
         super(driver);
@@ -32,24 +33,18 @@ public class HelperUser extends HelperBase {
 
     public void checkBoxPolicy() {
         new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@name='acceptPrivacyPolicy']"))));
-        click(By.xpath("//*[@name='acceptPrivacyPolicy']"));
+                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id='regular-signup-form-acceptPrivacyPolicy']"))));
+        click(By.xpath("//*[@id='regular-signup-form-acceptPrivacyPolicy']"));
     }
 
     public void scrollDownTheForm() {
-        Actions action = new Actions(driver);
-        WebElement container = driver.findElement(By.xpath("//*[@class='profile__ikea-container profile__single-signup']"));
-        Rectangle rect = container.getRect();
-        int x = rect.getX();
-        int y = rect.getY() + rect.getHeight() / 2;
-        action.moveByOffset(x, y).click().perform();
 
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,450)","");
 
     }
 
     public String checkMessage() {
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//h1"))));
+
         return driver.findElement(By.xpath("//h1")).getText();
     }
 

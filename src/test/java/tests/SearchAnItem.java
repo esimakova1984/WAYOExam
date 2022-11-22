@@ -21,7 +21,7 @@ public class SearchAnItem extends TestBase{
         logger.info("white color of 'Trulstorp' table is selected");
         app.getHelperSearch().openSearchAShop();
         logger.info("The store is selected");
-        app.getHelperSearch().selectATown("אשתאול");
+        app.getHelperSearch().selectATown("נתניה");
         logger.info("The town is selected");
         if(!app.getHelperSearch().isTheItemNotAvailable()){
             logger.info("Check that item is available in the store");
